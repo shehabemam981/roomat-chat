@@ -17,6 +17,7 @@ databaseutils database=databaseutils(reposatoryimpl());
       myuser? users=await database.repo.login(credential.user?.uid ?? "");
       if(users!=null){
         print('hello');
+        navigator!.hideloading();
       navigator!.home(users);
       }
     } on FirebaseAuthException catch (e) {
