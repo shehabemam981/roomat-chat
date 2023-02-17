@@ -37,9 +37,9 @@ class _createroomviewState extends baseview<createRoomViewModel,createroomview> 
     var pro=Provider.of<myprovider>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:(pro.themes==ThemeMode.light)? Colors.white:BLACK_COLOR,
-
-        title: Text("Create Room",style: TextStyle(fontWeight:FontWeight.bold ,fontSize:30 ,),),
+        backgroundColor:(pro.themes==ThemeMode.light)? Colors.transparent:BLACK_COLOR,
+       iconTheme:IconThemeData(color: PRIMARY_COLOR) ,
+        title: Text("Create Room",style: TextStyle(fontWeight:FontWeight.bold ,fontSize:30 ,color: PRIMARY_COLOR,),),
         centerTitle: true,
         elevation: 0.0,
       ),
