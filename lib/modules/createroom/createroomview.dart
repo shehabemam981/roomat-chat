@@ -3,6 +3,9 @@ import 'package:gchat/base/baseview/baseview.dart';
 
 import 'package:gchat/modules/createroom/creareroomviewmodel.dart';
 import 'package:gchat/modules/createroom/createroomnavigator.dart';
+import 'package:gchat/shared/network/remote/myprovider.dart';
+import 'package:gchat/shared/style/themes/color.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -31,11 +34,12 @@ class _createroomviewState extends baseview<createRoomViewModel,createroomview> 
   var discrebtioncontroller=TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var pro=Provider.of<myprovider>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.blue,
-        title: Text("Create Room",style: TextStyle(color: Colors.blue),),
+        backgroundColor:(pro.themes==ThemeMode.light)? Colors.white:BLACK_COLOR,
+
+        title: Text("Create Room",style: TextStyle(fontWeight:FontWeight.bold ,fontSize:30 ,),),
         centerTitle: true,
         elevation: 0.0,
       ),

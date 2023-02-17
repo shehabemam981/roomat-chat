@@ -5,6 +5,7 @@ import 'package:gchat/modules/home/homeView.dart';
 import 'package:gchat/modules/login/loginview.dart';
 import 'package:gchat/modules/register/regesterview.dart';
 import 'package:gchat/shared/network/remote/myprovider.dart';
+import 'package:gchat/shared/style/themes/themes.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/myroom/myroomview.dart';
@@ -33,8 +34,11 @@ class MyApp extends StatelessWidget {
         loginview.RouteName: (c) => loginview(),
         createroomview.RouteName: (c) => createroomview(),
         myroomview.RouteName: (c) => myroomview(),
-
       },
+      theme: MyThemeData.lightTheme,
+      darkTheme: MyThemeData.DarkTheme,
+      themeMode:pro.themes,
+
     );
   }
 }

@@ -22,19 +22,19 @@ class _myroomviewState extends baseview<myroomviewmodel,myroomview> implements m
     // TODO: implement initState
     super.initState();
     model.navigator=this;
+
+
   }
 
   var textController=TextEditingController();
   var formkey=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    var args=ModalRoute.of(context)!.settings.arguments as room;
     var provider = Provider.of<myprovider>(context);
-    // print(provider.users!.id);
+    var args=ModalRoute.of(context)!.settings.arguments as room;
     model.user = provider.users!;
     model.Room = args;
-
-
+    model.getmymasseges();
     return ChangeNotifierProvider(
       create: (BuildContext context) =>model,
       child: Scaffold(
@@ -65,11 +65,11 @@ class _myroomviewState extends baseview<myroomviewmodel,myroomview> implements m
                         stream: model.getmymasseges(),
                         builder:(context,snapshot){
                           if(snapshot.hasError){
-                            return Image.asset("assets/images/loading.gif");
+                            return Center(child: Image.asset("assets/images/loading.gif"));
                           }
 
                          else if (snapshot.connectionState == ConnectionState.waiting) {
-                            return Image.asset("assets/images/loading.gif");
+                            return Center(child: Image.asset("assets/images/loading.gif"));
                           }
                           var massege=snapshot.data?.docs.map((e) => e.data()).toList();
                           return ListView.builder(
@@ -109,7 +109,9 @@ class _myroomviewState extends baseview<myroomviewmodel,myroomview> implements m
                     ),
                   ),
                   SizedBox(width: 6,),
-                  ElevatedButton(onPressed: (){},
+                  ElevatedButton(onPressed: (){
+                    model.addmymasseges(textController.text);
+                  },
                       child:Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

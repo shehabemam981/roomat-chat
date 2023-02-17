@@ -7,6 +7,7 @@ import 'package:gchat/modules/home/homenavigator.dart';
 import 'package:gchat/modules/home/homeviewmodel.dart';
 import 'package:gchat/modules/login/loginview.dart';
 import 'package:gchat/modules/setting/settingview.dart';
+import 'package:gchat/shared/style/themes/color.dart';
 import 'package:provider/provider.dart';
 
 import '../search/myhomeview.dart';
@@ -48,7 +49,10 @@ class _homeviewState extends baseview<homeviewmodel, homeview>
       create: (BuildContext context) =>model,
       child: Scaffold(
         appBar: AppBar(
+
+          elevation: 0.0,
           actions: [
+
             IconButton(
               onPressed: () {
                 signout();

@@ -6,10 +6,13 @@ import 'package:gchat/modules/myroom/myroomNavigator.dart';
 import 'package:gchat/shared/network/remote/databaseutils.dart';
 
 import '../../model/my user.dart';
+import '../../repo/uth_repo_contact/impl/impl.dart';
 
 class myroomviewmodel extends baseviewmodel<myroomnavigator>{
-   late room Room;
+  databaseutils database=databaseutils(reposatoryimpl());
   late myuser user;
+  late room Room;
+
   void addmymasseges(String content){
     if(content.trim().isEmpty)return;
     masseges massege=masseges(
@@ -19,12 +22,12 @@ class myroomviewmodel extends baseviewmodel<myroomnavigator>{
         sinderid: user.id,
         roomid: Room.id,
     );
-    databaseutils.addmassegestofirestore(massege)
+    database.repo.addmassegestofirestore(massege)
        .then((value) =>navigator!.clearmassege())
        .catchError((onError)=>navigator!.showmassege(onError.toString()));
 
   }
   Stream<QuerySnapshot<masseges>> getmymasseges(){
-   return databaseutils.readmassegesfromfirestore(Room.id);
+   return database.repo.readmassegesfromfirestore(Room.id);
   }
 }
